@@ -35,30 +35,37 @@
     <div class="full-height">
         <!-- Header -->
         <%@include file="../header.jsp" %>
-
+        
         <!-- Phần chính (Login form) sẽ căn giữa -->
         <div class="main-content">
             <div class="container">
-                <form class="p-4 border rounded shadow bg-light" method="post" action="khach-hang">
-                    <!-- Email input -->
+                <%
+		 String url1 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath();
+		 %>
+                <form class="p-4 border rounded shadow bg-light" method="post" action="<%=url1%>/khach-hang">
+                    <!-- hành động của form  -->
+                    <input class="form-control" name="hanhdong" value="login" type="hidden">
+                    
+                    <!-- Username or email input -->
                     <div data-mdb-input-init class="form-outline mb-2">
-                        <label class="form-label" for="form2Example1">Username or email</label>
-                        <input type="email" id="form2Example1" class="form-control" />
+                        <label class="form-label" for="username_or_email">Username or email</label>
+                        <input type="text" id="username_or_email" class="form-control" name="username_or_email" />
                     </div>
 
                     <!-- Password input -->
                     <div data-mdb-input-init class="form-outline mb-2">
-                        <label class="form-label" for="form2Example2">Password</label>
-                        <input type="password" id="form2Example2" class="form-control" />
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" class="form-control" name="password" />
                     </div>
 
                     <div class="row mb-2">
-                        <a class="col-6">Đăng ký tài khoản</a>
-                        <a class="col-6 text-end" href="#!">Forgot password?</a>
+                        <a class="col-6 " href="#!">Forgot password?</a>
+                        <a class="col-6 text-end">Đăng ký tài khoản</a>
                     </div>
 
                     <div class="row mb-2">
-                        <input type="submit" class="btn btn-primary" value="Login" />
+                        <input type="submit" class="btn btn-primary"/>
                     </div>
                 </form>
             </div>

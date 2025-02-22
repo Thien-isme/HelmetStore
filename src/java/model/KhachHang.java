@@ -28,6 +28,50 @@ public class KhachHang {
         this.email = email;
     }
 
+    public KhachHang(String tenDangNhap, String matKhau) {
+        this.tenDangNhap = tenDangNhap;
+        this.matKhau = matKhau;
+    }
+
+    public KhachHang(String maKhachHang, String tenDangNhap, String matKhau, String hoVaTen, String gioiTinh, Date ngaySinh, String soDienThoai, String email, String quocTich, String diaChiKhachHang, String diaChiNhanHang, boolean dangKyNhanBangTin, String maXacThuc, Date thoiGianHieuLucMaXacThuc, boolean trangThaiXacThuc, String hinhAvatar) {
+        this.maKhachHang = maKhachHang;
+        this.tenDangNhap = tenDangNhap;
+        this.matKhau = matKhau;
+        this.hoVaTen = hoVaTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
+        this.quocTich = quocTich;
+        this.diaChiKhachHang = diaChiKhachHang;
+        this.diaChiNhanHang = diaChiNhanHang;
+        this.dangKyNhanBangTin = dangKyNhanBangTin;
+        this.maXacThuc = maXacThuc;
+        this.thoiGianHieuLucMaXacThuc = thoiGianHieuLucMaXacThuc;
+        this.trangThaiXacThuc = trangThaiXacThuc;
+        this.hinhAvatar = hinhAvatar;
+    }
+
+    public KhachHang(String maKhachHang, String hoVaTen, String gioiTinh, Date ngaySinh, String soDienThoai, String email, String quocTich, String diaChiKhachHang, String diaChiNhanHang, boolean dangKyNhanBangTin) {
+        this.maKhachHang = maKhachHang;
+        this.hoVaTen = hoVaTen;
+        this.gioiTinh = gioiTinh;
+        this.ngaySinh = ngaySinh;
+        this.soDienThoai = soDienThoai;
+        this.email = email;
+        this.quocTich = quocTich;
+        this.diaChiKhachHang = diaChiKhachHang;
+        this.diaChiNhanHang = diaChiNhanHang;
+        this.dangKyNhanBangTin = dangKyNhanBangTin;
+    }
+    
+    
+    
+    
+    
+    
+    
+
     public String getMaKhachHang() {
         return maKhachHang;
     }

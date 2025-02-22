@@ -1,14 +1,15 @@
 package database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.KhachHang;
 import utils.JDBCUtil;
 
-
-public class KhachHangDAO implements DAOInterface<KhachHang>{
+public class KhachHangDAO implements DAOInterface<KhachHang> {
 
     @Override
     public ArrayList<KhachHang> selectAll() {
@@ -27,7 +28,7 @@ public class KhachHangDAO implements DAOInterface<KhachHang>{
         try {
             // B1: Tạo connection
             Connection c = JDBCUtil.getConnection();
-            
+
             // B2: Tạo câu SQL
             String sql = "INSERT INTO khachhang(makhachhang, tendangnhap, matkhau,email) VALUES(?,?,?,?) ";
             PreparedStatement ps = c.prepareStatement(sql);
@@ -38,11 +39,11 @@ public class KhachHangDAO implements DAOInterface<KhachHang>{
 
             // B3: Chạy câu lệnh SQL
             ketQua = ps.executeUpdate();
-            
+
             //B4: Xử lý dữ liệu (nếu cần)
             System.out.println("Bạn đã thực thi: " + sql);
             System.out.println("Có " + ketQua + " dòng bị thay đổi!");
-            
+
             // B5: Đóng Connection
             JDBCUtil.close(c);
 
@@ -52,8 +53,7 @@ public class KhachHangDAO implements DAOInterface<KhachHang>{
             e.getErrorCode();
             e.getSQLState();
         }
-        
-        
+
         return ketQua;
     }
 
@@ -74,7 +74,92 @@ public class KhachHangDAO implements DAOInterface<KhachHang>{
 
     @Override
     public int update(KhachHang t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int ketQua = 0;
+        try {
+            // B1: Tạo connection
+            Connection c = JDBCUtil.getConnection();
+
+            // B2: Tạo câu SQL
+            String sql = "UPDATE khachhang SET hovaten=?, gioitinh=?, ngaysinh=?, sodienthoai=?, email=?, quoctich=?, diachikhachhang=?, diachinhanhang=?, dangkynhanbangtin=? "
+                    + " WHERE makhachhang=?";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, t.getHoVaTen());
+            ps.setString(2, t.getGioiTinh());
+            ps.setDate(3, t.getNgaySinh());
+            ps.setString(4, t.getSoDienThoai());
+            ps.setString(5, t.getEmail());
+            ps.setString(6, t.getQuocTich());
+            ps.setString(7, t.getDiaChiKhachHang());
+            ps.setString(8, t.getDiaChiNhanHang());
+            ps.setBoolean(9, t.isDangKyNhanBangTin());
+            ps.setString(10, t.getMaKhachHang());
+
+            System.out.println(ps);
+            // B3: Chạy câu lệnh SQL
+            ketQua = ps.executeUpdate();
+
+            //B4: Xử lý dữ liệu (nếu cần)
+            System.out.println("Bạn đã thực thi: " + sql);
+            System.out.println("Có " + ketQua + " dòng bị thay đổi!");
+
+            // B5: Đóng Connection
+            JDBCUtil.close(c);
+
+        } catch (SQLException e) {
+            System.out.println("Update thất bại");
+            e.printStackTrace();
+            e.getErrorCode();
+            e.getSQLState();
+        }
+
+        return ketQua;
     }
-    
+
+    public KhachHang selectByUsernameAndPassword(KhachHang kh) {
+        KhachHang ketQua = null;
+
+        try {
+            Connection con = JDBCUtil.getConnection();
+
+            String sql = " SELECT * \n"
+                    + " FROM khachhang\n"
+                    + " WHERE (tendangnhap = ? OR email = ?) AND matkhau = ? ";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, kh.getTenDangNhap());
+            ps.setString(2, kh.getTenDangNhap());
+            ps.setString(3, kh.getMatKhau());
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String maKhachHang = rs.getString(1);
+                String tenDangNhap = rs.getString(2);
+                String matKhau = rs.getString(3);
+                String hoVaTen = rs.getString(4);
+                String gioiTinh = rs.getString(5);
+                Date ngaySinh = rs.getDate(6);
+                String soDienThoai = rs.getString(7);
+                String email = rs.getString(8);
+                String quocTich = rs.getString(9);
+                String diaChiKhachHang = rs.getString(10);
+                String diaChiNhanHang = rs.getString(11);
+                boolean dangKyNhanBangTin = rs.getBoolean(12);
+                String maXacThuc = rs.getString(13);
+                Date thoiGianHieuLucMaXacThuc = rs.getDate(14);
+                boolean trangThaiXacThuc = rs.getBoolean(15);
+                String hinhAvatar = rs.getString(16);
+                
+                ketQua = new KhachHang(maKhachHang, tenDangNhap, matKhau, hoVaTen, gioiTinh, ngaySinh, soDienThoai, email, quocTich, diaChiKhachHang, diaChiNhanHang, dangKyNhanBangTin, maXacThuc, thoiGianHieuLucMaXacThuc, trangThaiXacThuc, hinhAvatar);
+                
+             }
+            
+            JDBCUtil.close(con);
+
+        } catch (Exception e) {
+        }
+
+        return ketQua;
+    }
+
 }

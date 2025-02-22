@@ -4,6 +4,7 @@
     Author     : Thien
 --%>
 
+<%@page import="model.KhachHang"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
     </head>
+    <style>
+        .notification_icon{
+            width: 22px; 
+        }
+        
+        .accountprofile_icon{
+            width:36px ;
+        }
+    </style>
     <body>
         <%
             String url = request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
@@ -35,10 +45,52 @@
                 </div>
             </div>
             <div class="col-3 row d-flex flex-row justify-content-between align-items-center">
+                
+                <!-- Code lấy session -->
+                <%
+                    Object obj = session.getAttribute("khachHang");
+                    KhachHang khachHang = null;
+                    if(obj!=null){
+                        khachHang = (KhachHang) obj;
+                    }
+                %>
+                
+                <%
+                    if(khachHang==null){     
+                %>
                     <a class="col-4 text-center fs-4 text-decoration-none" href="<%=url%>/khachhang/login.jsp" target="_self"> Login</a>
                     <a class="col-4 text-center fs-4 text-decoration-none" href="<%=url%>/khachhang/register.jsp" target="_self"> Register</a>
+                <%
+                    } else { 
+                %>
+                <div class="col-8 text-center">
+                    <ul class="navbar-nav me-auto bg-infor ">
+                        <li class="nav-item dropdown">
+                            <a style="font-size: 20px;"  class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                <img class="accountprofile_icon" src="<%=url%>/GUI-icons/accountprofile_icon.png"  alt="Ảnh Avatar"> <%=khachHang.getHoVaTen() %>
+                            </a>
+                            <ul class="dropdown-menu " style=" width: 100%">
+                                    <li><a class="dropdown-item" href="#">My Order</a></li>
+                                    <li><a class="dropdown-item" href="#">Notification <img class="notification_icon" src="<%=url%>/GUI-icons/notification_icon.png"  alt="Ảnh Avatar"></a></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/khachhang/updateprofile.jsp">Update Information</a></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/khachhang/doimatkhau.jsp">Change Password</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/khach-hang?hanhDong=dang-xuat">Log-out</a></li>
+                                </ul>
+                        </li>
+                    </ul>	
+                                                        </div>
+                <% 
+                }
+                %>
+
                     <a class="col-4 text-center fs-4 text-decoration-none no-wrap" href="<%=url%>/header.jsp" target="_self"> Giỏ Hàng</a>
             </div>
         </div>
     </body>
+    <script>
+        $('#myDropdown').on('show.bs.dropdown', function () {
+  // do something…
+})
+    </script>
 </html>

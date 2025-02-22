@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            String url1= request.getScheme() + "://" + request.getServerName()+":" + request.getServerPort()+request.getContextPath();
+        %>
         <h1>Bạn đã đăng ký thành công tài khoản</h1>
+        <h1><%=url1%></h1>
+        <h1> <a href="<%=url1%>/index.jsp">Trở về trang chủ</a> </h1>
     </body>
 </html>

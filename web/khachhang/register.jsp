@@ -43,7 +43,10 @@
                 <div class="container">
                     <form class="p-4 border rounded shadow bg-light" method="get" action="../khach-hang">
                         <h1><%=url1%></h1>
+                        
+                        <!-- hành động của form -->
                         <input type="hidden" name="hanhdong" value="register"> 
+                        
                         <h1 class="text-center">Register Account</h1>
 
                         <!-- Username input -->
@@ -64,7 +67,7 @@
                             <input type="password" id="confirmpassword" class="form-control" name="confirmpassword" />
                         </div>
                         
-                                                <!-- Email input -->
+                        <!-- Email input -->
                         <div data-mdb-input-init class="form-outline mb-2">
                             <label class="form-label" for="email">Email</label>
                             <input type="text" id="email" class="form-control" name="email" />

@@ -5,9 +5,12 @@
         <group>
             <file>file:/F:/Ky_4_FPT/PRJ/project/src/java/controller/KhachHangController.java</file>
             <file>file:/F:/Ky_4_FPT/PRJ/project/src/java/database/KhachHangDAO.java</file>
-            <file>file:/F:/Ky_4_FPT/PRJ/project/src/java/utils/JDBCUtil.java</file>
             <file>file:/F:/Ky_4_FPT/PRJ/project/web/khachhang/register.jsp</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/project/web/header.jsp</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/project/web/index.jsp</file>
             <file>file:/F:/Ky_4_FPT/PRJ/project/src/java/model/KhachHang.java</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/project/web/khachhang/loginsuccess.jsp</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/project/web/khachhang/updateprofile.jsp</file>
         </group>
     </open-files>
 </project-private>
