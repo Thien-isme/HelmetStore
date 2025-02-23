@@ -1,12 +1,30 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<div class="container">
-    <!-- Header -->
+<%-- 
+    Document   : updateprofileee
+    Created on : Feb 22, 2025, 5:51:39 PM
+    Author     : Thien
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    
     <%@include file="../header.jsp" %>
-    <%            String url1 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-                + request.getContextPath();
-    %>
-    <div class="row">
+        <%
+            if(khachHang==null){ 
+        %>
+        <h1 class="red">Báº¡n chÆ°a Ä‘Äƒng nháº­p</h1>
+        <% 
+            }else {
+        %>
+        <div class="row">
         <div class="col-12">
             <!-- Page title -->
             <div class="my-5">
@@ -22,9 +40,9 @@
                         <div class="bg-secondary-soft px-4 py-5 rounded">
                             <div class="row g-3">
                                 <h4 class="mb-4 mt-0">Contact detail</h4>
-                                <!-- Thêm ô nh?p mã khách hàng -->
+                                <!-- ThÃªm Ã´ nh?p mÃ£ khÃ¡ch hÃ ng -->
                                 <div class="col-md-6">
-                                    <label class="form-label">Customer ID (Mã khách hàng) *</label>
+                                    <label class="form-label">Customer ID (MÃ£ khÃ¡ch hÃ ng) *</label>
                                     <input type="text" class="form-control" placeholder="Nhap ma khach hang" name="maKhachHang" required>
                                 </div>
 
@@ -111,4 +129,7 @@
             </form> <!-- Form END -->
         </div>
     </div>
-</div>
+
+    <% } %>    
+    </body>
+</html>

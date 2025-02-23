@@ -17,8 +17,8 @@ public class KhachHang {
     private String diaChiNhanHang;
     private boolean dangKyNhanBangTin;
     private String maXacThuc;
-    private Date thoiGianHieuLucMaXacThuc;
-    private boolean trangThaiXacThuc;
+    private String thoiGianHieuLucMaXacThuc;
+    private String trangThaiXacThuc;
     private String hinhAvatar;
 
     public KhachHang(String maKhachHang, String tenDangNhap, String matKhau, String email) {
@@ -33,7 +33,7 @@ public class KhachHang {
         this.matKhau = matKhau;
     }
 
-    public KhachHang(String maKhachHang, String tenDangNhap, String matKhau, String hoVaTen, String gioiTinh, Date ngaySinh, String soDienThoai, String email, String quocTich, String diaChiKhachHang, String diaChiNhanHang, boolean dangKyNhanBangTin, String maXacThuc, Date thoiGianHieuLucMaXacThuc, boolean trangThaiXacThuc, String hinhAvatar) {
+    public KhachHang(String maKhachHang, String tenDangNhap, String matKhau, String hoVaTen, String gioiTinh, Date ngaySinh, String soDienThoai, String email, String quocTich, String diaChiKhachHang, String diaChiNhanHang, boolean dangKyNhanBangTin, String maXacThuc, String thoiGianHieuLucMaXacThuc, String trangThaiXacThuc, String hinhAvatar) {
         this.maKhachHang = maKhachHang;
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
@@ -176,19 +176,19 @@ public class KhachHang {
         this.maXacThuc = maXacThuc;
     }
 
-    public Date getThoiGianHieuLucMaXacThuc() {
+    public String getThoiGianHieuLucMaXacThuc() {
         return thoiGianHieuLucMaXacThuc;
     }
 
-    public void setThoiGianHieuLucMaXacThuc(Date thoiGianHieuLucMaXacThuc) {
+    public void setThoiGianHieuLucMaXacThuc(String thoiGianHieuLucMaXacThuc) {
         this.thoiGianHieuLucMaXacThuc = thoiGianHieuLucMaXacThuc;
     }
 
-    public boolean isTrangThaiXacThuc() {
+    public String isTrangThaiXacThuc() {
         return trangThaiXacThuc;
     }
 
-    public void setTrangThaiXacThuc(boolean trangThaiXacThuc) {
+    public void setTrangThaiXacThuc(String trangThaiXacThuc) {
         this.trangThaiXacThuc = trangThaiXacThuc;
     }
 

@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.KhachHang;
+import utils.Email;
+import utils.OTP;
+import utils.Time;
 
 @WebServlet(name = "KhachHangController", urlPatterns = {"/khach-hang"})
 public class KhachHangController extends HttpServlet {
@@ -24,10 +27,16 @@ public class KhachHangController extends HttpServlet {
         System.out.println(hanhdong);
         if (hanhdong.equals("register")) {
             register(request, response);
-        } else if (hanhdong.equals("login")){
+        } else if (hanhdong.equals("login")) {
             login(request, response);
-        }else if (hanhdong.equals("updateProfile")) {
+        } else if (hanhdong.equals("updateProfile")) {
             updateProfile(request, response);
+        } else if (hanhdong.equals("logout")) {
+            logout(request, response);
+        } else if (hanhdong.equals("resetpassword")) {
+            resetPassword(request, response);
+        } else if (hanhdong.equals("viaemailbeforeresetpassword")) {
+            viaemailbeforeresetpassword(request, response);
         }
 
     }
@@ -83,7 +92,7 @@ public class KhachHangController extends HttpServlet {
                 KhachHangDAO khachHangDao = new KhachHangDAO();
                 khachHangDao.insert(kh);
                 url = "/khachhang/registersuccess.jsp";
-                
+
             }
 
             // Tạo KhachHang lưu xuống CSDL
@@ -101,7 +110,7 @@ public class KhachHangController extends HttpServlet {
         }
 
     }
-    
+
     private void login(HttpServletRequest request, HttpServletResponse response) {
         String error = "";
 
@@ -109,7 +118,6 @@ public class KhachHangController extends HttpServlet {
         try {
             String username_or_email = request.getParameter("username_or_email");
             String password = request.getParameter("password");
-
 
             // set attribute trả về để không phải nhập lại từng cái nếu sai
             request.setAttribute("username_or_email", username_or_email);
@@ -123,27 +131,25 @@ public class KhachHangController extends HttpServlet {
             }
 
             // mã hóa mật khẩu (chưa làm)
-            
-            
             //Trả về báo lỗi nếu có
             if (error.length() > 0) {
                 request.setAttribute("error", error);
                 // Quay lại trang đăng nhập
                 url = "/khachhang/loginsuccess.jsp";
             } else { // nếu không có lỗi thì Chuyển sang trang chính              
-                KhachHang khachHang  = new KhachHang(username_or_email, password);
+                KhachHang khachHang = new KhachHang(username_or_email, password);
                 KhachHangDAO khachHangDAO = new KhachHangDAO();
                 khachHang = khachHangDAO.selectByUsernameAndPassword(khachHang);
-                
+
                 // Kiểm tra kh được lấy lên từ CSDL có đúng hay không
-                if(khachHang!=null){
+                if (khachHang != null) {
                     HttpSession session = request.getSession();
                     session.setAttribute("khachHang", khachHang);
-                    url = "/khachhang/loginsuccess.jsp";
-                }else{
+                    url = "/index.jsp";
+                } else {
                     url = "/khachhang/login.jsp";
                 }
-                
+
             }
 
             // Tạo KhachHang lưu xuống CSDL
@@ -151,9 +157,9 @@ public class KhachHangController extends HttpServlet {
 
             e.printStackTrace();
         }
-        
+
         // Điều hướng chương trình đừng sửa gì phần này
-        System.out.println("url="+url);
+        System.out.println("url=" + url);
         try {
             RequestDispatcher rdd = getServletContext().getRequestDispatcher(url);
             rdd.forward(request, response);
@@ -161,10 +167,8 @@ public class KhachHangController extends HttpServlet {
             e.printStackTrace();
         }
 
-
-
     }
-    
+
     private void updateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String maKhachHang = request.getParameter("maKhachHang");
         try {
@@ -216,6 +220,159 @@ public class KhachHangController extends HttpServlet {
         }
     }
 
+    private void logout(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            HttpSession session = request.getSession();
+
+            // Hủy bỏ session
+            session.invalidate();
+
+            String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + request.getContextPath();
+
+            response.sendRedirect(url + "/index.jsp");
+        } catch (Exception e) {
+            System.out.println("Log-out thất bại");
+            e.printStackTrace();
+        }
+    }
+
+    private void resetPassword(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String password = request.getParameter("password");
+            String newPassword = request.getParameter("newPassword");
+            String newPasswordConfirm = request.getParameter("newPasswordConfirm");
+
+            String error = "";
+            String url = "";
+
+            HttpSession session = request.getSession();
+            Object obj = session.getAttribute("khachHang");
+            KhachHang khachHang = null;
+            if (obj != null) {
+                khachHang = (KhachHang) obj;
+            }
+
+            if (password.length() == 0) {
+                error += "password không được để trống";
+            }
+
+            if (!password.equals(khachHang.getMatKhau())) {
+                error += "password hiện tại không đúng";
+            }
+
+            if (newPassword.length() == 0) {
+                error += "NewPassword không được để trống";
+            }
+
+            if (newPasswordConfirm.length() == 0) {
+                error += "NewPassword không được để trống";
+            }
+
+            if (!newPassword.equals(newPasswordConfirm)) {
+                error += "NewPassword và NewPasswordConfirm KHÔNG KHỚP";
+            }
+
+            request.setAttribute("error", error);
+
+            if (error.length() > 0) {
+                url = "/khachhang/resetpassword.jsp";
+            } else {
+                url = "/khachhang/viaemailbeforeresetpassword.jsp";
+                
+                // Cập nhật newPassword để qua viaemailbeforeresetpassword có thể lưu xuống
+                khachHang.setMatKhau(newPassword);
+                
+                // Gửi mail để khách hàng nhận OTP
+
+            
+                // Cập nhật OTP và thời gian xác thực xuống CSDL để qua trang VIA check
+                String maXacThuc = OTP.getOTP();
+                String timeLate = Time.timeNowPlus_X_minutes(10);
+                
+                khachHang.setMaXacThuc(maXacThuc);
+                khachHang.setThoiGianHieuLucMaXacThuc(timeLate);
+                khachHang.setTrangThaiXacThuc("0");
+                
+                
+
+                KhachHangDAO dao = new KhachHangDAO();
+                if (dao.updateMaXacThuc(khachHang) > 0) {
+                    System.out.println("Cập nhật OTP thành công");
+                    
+                    // gửi OTP đến mail
+                    Email.sendEmailTo(khachHang.getEmail(), khachHang.getMaXacThuc());
+                }
+            }
+
+            System.out.println("error=" + error);
+            System.out.println("url=" + url);
+
+//            request.setAttribute("khachHang", khachHang);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+            rd.forward(request, response);
+
+        } catch (Exception e) {
+            System.out.println("Lỗi ở resetPassword");
+            e.printStackTrace();
+        }
+    }
+
+    private void viaemailbeforeresetpassword(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            String sortOTP = request.getParameter("sortOTP");
+
+            HttpSession session = request.getSession();
+            Object obj = session.getAttribute("khachHang");
+            KhachHang khachHang = null;
+            if (obj != null) {
+                khachHang = (KhachHang) obj;
+            }
+            
+            String url = "";
+            String error = "";
+            
+            
+//            String timeNowPlus15Minutes = Time.timeNowPlus_X_minutes(15);
+//            System.out.println("Timenow: " +timeNow);
+//            System.out.println("TimeKahchHnag: " +khachHang.getThoiGianHieuLucMaXacThuc());
+            String timeNow = Time.getTimeNow();
+            
+            if(Time.compareTime(timeNow, khachHang.getThoiGianHieuLucMaXacThuc()) > 0){
+                error += "Đã hết thời gian hiệu lực của mã OTP";
+                url = "/khachhang/viaemailbeforeresetpassword.jsp";
+            }
+            
+            
+
+            if (!sortOTP.equals(khachHang.getMaXacThuc())) {
+                System.out.println("Đã xác thực THẤT BẠI.");
+                error = "SAI OTP";
+                url = "/khachhang/viaemailbeforeresetpassword.jsp";
+            } 
+            
+            if (error.length()>0) {
+                url = "/khachhang/viaemailbeforeresetpassword.jsp";
+            } else {
+                // Cập nhật thông tin xuống CSDL khi người dùng nhập đúng OTP
+                KhachHangDAO dao = new KhachHangDAO();
+                
+                // Set mật khẩu mới và trạng thái xác thực = 1
+                dao.updateNewPassword(khachHang);
+                
+                System.out.println("Đã xác thực thành công. Mật khẩu đã được đổi");
+                url = "/khachhang/viaemailbeforeresetpassword_success.jsp";
+            }
+
+            request.setAttribute("error", error);
+            RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+            rd.forward(request, response);
+        } catch (Exception e) {
+            System.out.println("Lỗi ở viaemailbeforeresetpassword");
+            e.printStackTrace();
+        }
+
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -254,7 +411,5 @@ public class KhachHangController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    
 
 }

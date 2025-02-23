@@ -146,20 +146,84 @@ public class KhachHangDAO implements DAOInterface<KhachHang> {
                 String diaChiNhanHang = rs.getString(11);
                 boolean dangKyNhanBangTin = rs.getBoolean(12);
                 String maXacThuc = rs.getString(13);
-                Date thoiGianHieuLucMaXacThuc = rs.getDate(14);
-                boolean trangThaiXacThuc = rs.getBoolean(15);
+                String thoiGianHieuLucMaXacThuc = rs.getString(14);
+                String trangThaiXacThuc = rs.getString(15);
                 String hinhAvatar = rs.getString(16);
-                
+
                 ketQua = new KhachHang(maKhachHang, tenDangNhap, matKhau, hoVaTen, gioiTinh, ngaySinh, soDienThoai, email, quocTich, diaChiKhachHang, diaChiNhanHang, dangKyNhanBangTin, maXacThuc, thoiGianHieuLucMaXacThuc, trangThaiXacThuc, hinhAvatar);
-                
-             }
-            
+
+            }
+
             JDBCUtil.close(con);
 
         } catch (Exception e) {
         }
 
         return ketQua;
+    }
+
+    public int changePassword(KhachHang khachHang) {
+        int ketQua = 0;
+
+        return ketQua;
+    }
+
+    public int updateMaXacThuc(KhachHang khachHang) {
+        int ketQua = 0;
+
+        try {
+            Connection con = JDBCUtil.getConnection();
+
+            String sql = " UPDATE khachhang \n"
+                    + " SET maxacthuc = ?, thoigianhieulucmaxacthuc = ?, trangthaixacthuc = ?"
+                    + " WHERE makhachhang = ?";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, khachHang.getMaXacThuc());
+            ps.setString(2, khachHang.getThoiGianHieuLucMaXacThuc());
+            ps.setString(3, khachHang.isTrangThaiXacThuc());
+            ps.setString(4, khachHang.getMaKhachHang());
+            
+            ketQua = ps.executeUpdate();
+            
+            System.out.println("Bạn đã thực thi: " + sql);
+            System.out.println("Có " + ketQua + " dòng bị thay đổi!");
+
+            JDBCUtil.close(con);
+
+        } catch (Exception e) {
+            System.out.println("Lỗi ở update OTP via email");
+            e.printStackTrace();
+        }
+
+        return ketQua;
+    }
+
+    public int updateNewPassword(KhachHang khachHang) {
+        int ketQua = 0;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            
+            String sql = " UPDATE khachhang\n " +
+                         " SET matkhau = ?, trangthaixacthuc = ? " +
+                         " WHERE makhachhang = ? ";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, khachHang.getMatKhau());
+            ps.setString(2, "1");
+            ps.setString(3, khachHang.getMaKhachHang());
+            
+            ketQua = ps.executeUpdate();
+            
+            JDBCUtil.close(con);
+            
+        } catch (Exception e) {
+            System.out.println("Lỗi ở updateNewPassword");
+            e.printStackTrace();
+        }
+        
+        return ketQua;
+        
     }
 
 }

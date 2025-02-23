@@ -55,36 +55,21 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("        ");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Header</title>\n");
       out.write("        <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\" integrity=\"sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p\" crossorigin=\"anonymous\"></script>\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js\" integrity=\"sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF\" crossorigin=\"anonymous\"></script>\n");
-      out.write("\n");
       out.write("    </head>\n");
-      out.write("    <style>\n");
-      out.write("        .notification_icon{\n");
-      out.write("            width: 22px; \n");
-      out.write("        }\n");
-      out.write("        \n");
-      out.write("        .accountprofile_icon{\n");
-      out.write("            width:36px ;\n");
-      out.write("        }\n");
-      out.write("    </style>\n");
       out.write("    <body>\n");
+      out.write("        ");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("        ");
 
             String url = request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+           
         
       out.write("\n");
       out.write("        \n");
@@ -92,7 +77,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <div class=\"col-3\">\n");
       out.write("                <a href=\"");
       out.print(url);
-      out.write("/header.jsp\" target=\"_self\"> <img src=\"");
+      out.write("/index.jsp\" target=\"_self\"> <img src=\"");
       out.print(url);
       out.write("/img/logo.png\"></a>\n");
       out.write("            </div>\n");
@@ -145,7 +130,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <ul class=\"navbar-nav me-auto bg-infor \">\n");
       out.write("                        <li class=\"nav-item dropdown\">\n");
       out.write("                            <a style=\"font-size: 20px;\"  class=\"nav-link dropdown-toggle text-center\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> \n");
-      out.write("                                <img class=\"accountprofile_icon\" src=\"");
+      out.write("                                <img style=\"width: 36px\" src=\"");
       out.print(url);
       out.write("/GUI-icons/accountprofile_icon.png\"  alt=\"Ảnh Avatar\"> ");
       out.print(khachHang.getHoVaTen() );
@@ -153,7 +138,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            </a>\n");
       out.write("                            <ul class=\"dropdown-menu \" style=\" width: 100%\">\n");
       out.write("                                    <li><a class=\"dropdown-item\" href=\"#\">My Order</a></li>\n");
-      out.write("                                    <li><a class=\"dropdown-item\" href=\"#\">Notification <img class=\"notification_icon\" src=\"");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"#\">Notification <img style=\"width: 22px; \" src=\"");
       out.print(url);
       out.write("/GUI-icons/notification_icon.png\"  alt=\"Ảnh Avatar\"></a></li>\n");
       out.write("                                    <li><a class=\"dropdown-item\" href=\"");
@@ -161,11 +146,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("/khachhang/updateprofile.jsp\">Update Information</a></li>\n");
       out.write("                                    <li><a class=\"dropdown-item\" href=\"");
       out.print(url );
-      out.write("/khachhang/doimatkhau.jsp\">Change Password</a></li>\n");
+      out.write("/khachhang/resetpassword.jsp\">Change Password</a></li>\n");
       out.write("                                    <li><hr class=\"dropdown-divider\"></li>\n");
       out.write("                                    <li><a class=\"dropdown-item\" href=\"");
       out.print(url );
-      out.write("/khach-hang?hanhDong=dang-xuat\">Log-out</a></li>\n");
+      out.write("/khach-hang?hanhdong=logout\">Log-out</a></li>\n");
       out.write("                                </ul>\n");
       out.write("                        </li>\n");
       out.write("                    </ul>\t\n");
@@ -181,16 +166,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("/header.jsp\" target=\"_self\"> Giỏ Hàng</a>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
-      out.write("    </body>\n");
-      out.write("    <script>\n");
-      out.write("        $('#myDropdown').on('show.bs.dropdown', function () {\n");
-      out.write("  // do something…\n");
-      out.write("})\n");
-      out.write("    </script>\n");
-      out.write("</html>\n");
       out.write("\n");
       out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("</html>");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
