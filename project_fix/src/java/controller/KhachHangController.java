@@ -128,16 +128,16 @@ public class KhachHangController extends HttpServlet {
     private void login(HttpServletRequest request, HttpServletResponse response) {
         String error = "";
 
-        String url = "";
+        String url = "fdf";
         try {
-            String username_or_email = request.getParameter("username_or_email");
+            String username = request.getParameter("username");
             String password = request.getParameter("password");
 
             // set attribute trả về để không phải nhập lại từng cái nếu sai
-            request.setAttribute("username_or_email", username_or_email);
+            request.setAttribute("username", username);
 
             // Kiểm tra khách hàng có nhập thông tin hay chưa
-            if (username_or_email.length() == 0) {
+            if (username.length() == 0) {
                 error += "Bạn chưa nhập tên đăng nhập";
             }
             if (password.length() == 0) {
@@ -151,7 +151,7 @@ public class KhachHangController extends HttpServlet {
                 // Quay lại trang đăng nhập
                 url = "/khachhang/loginsuccess.jsp";
             } else { // nếu không có lỗi thì Chuyển sang trang chính              
-                KhachHang khachHang = new KhachHang(username_or_email, password);
+                KhachHang khachHang = new KhachHang(username, password);
                 KhachHangDAO khachHangDAO = new KhachHangDAO();
                 khachHang = khachHangDAO.selectByUsernameAndPassword(khachHang);
 

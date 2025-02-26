@@ -1,4 +1,5 @@
 
+<%@page import="model.KhachHang"%>
 <%
             String url = request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
            
@@ -34,12 +35,52 @@
             </li>
           </ul>
           <div class="user_option">
-              <a href="../khachhang/login.jsp">
+              
+              <%
+                    Object obj = session.getAttribute("khachHang");
+                    KhachHang khachHang = null;
+                    if(obj!=null){
+                        khachHang = (KhachHang) obj;
+                    }
+                %>
+               <%
+                    if(khachHang==null){     
+                %> 
+                
+              <a href="../khachhang/newjsp.jsp">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span>
                 Login
               </span>
             </a>
+                <%
+                    } else { 
+                %>
+                
+              <div class="col-8 text-center">
+                    <ul class="navbar-nav me-auto bg-infor ">
+                        <li class="nav-item dropdown">
+                            <a style="font-size: 20px;"  class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                
+                                <img style="width: 30px; border-radius: 50%" src="<%=url%>/GUI/imgsanpham/2.png"  alt="?nh Avatar">  <%=khachHang.getHoVaTen()%>
+                                
+                            </a>
+                            <ul class="dropdown-menu " style=" width: 126%">
+                                    <li><a class="dropdown-item" href="#">My Order</a></li>
+                                    <li><a class="dropdown-item" href="#">Notification <img style="width: 22px; " src="<%=url%>/GUI/images/notification_icon.png"  alt="?nh Avatar"></a></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/khachhang/updateprofile.jsp">Update Information</a></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/khachhang/resetpassword.jsp">Change Password</a></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/khachhang/upload.jsp">Update Avatar</a></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/homeGUI/getvoucher.jsp">Get Voucher</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/khach-hang?hanhdong=logout">Log-out</a></li>
+                                </ul>
+                        </li>
+                    </ul>	
+                                                        </div>
+            <% 
+                }
+                %>                    
             <a href="">
               <i class="fa fa-shopping-bag" aria-hidden="true"></i>
             </a>

@@ -3,6 +3,7 @@ package org.apache.jsp.GUI;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import model.KhachHang;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -67,7 +68,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <link rel=\"shortcut icon\" href=\"");
       out.print( url1 );
       out.write("/GUI/images/favicon.png\" type=\"image/x-icon\">\r\n");
-      out.write("\r\n");
+      out.write("<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n");
+      out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\" integrity=\"sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p\" crossorigin=\"anonymous\"></script>\r\n");
+      out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js\" integrity=\"sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF\" crossorigin=\"anonymous\"></script>\r\n");
       out.write("  <title>\r\n");
       out.write("    THT Helmet Store\r\n");
       out.write("\r\n");
@@ -95,6 +98,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <div class=\"hero_area\">\r\n");
       out.write("    <!-- header -->\r\n");
       out.write("    ");
+      out.write('\n');
       out.write('\n');
 
             String url = request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
@@ -140,12 +144,76 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </li>\n");
       out.write("          </ul>\n");
       out.write("          <div class=\"user_option\">\n");
-      out.write("              <a href=\"../khachhang/login.jsp\">\n");
+      out.write("              \n");
+      out.write("              ");
+
+                    Object obj = session.getAttribute("khachHang");
+                    KhachHang khachHang = null;
+                    if(obj!=null){
+                        khachHang = (KhachHang) obj;
+                    }
+                
+      out.write("\n");
+      out.write("               ");
+
+                    if(khachHang==null){     
+                
+      out.write(" \n");
+      out.write("                \n");
+      out.write("              <a href=\"../khachhang/newjsp.jsp\">\n");
       out.write("              <i class=\"fa fa-user\" aria-hidden=\"true\"></i>\n");
       out.write("              <span>\n");
       out.write("                Login\n");
       out.write("              </span>\n");
       out.write("            </a>\n");
+      out.write("                ");
+
+                    } else { 
+                
+      out.write("\n");
+      out.write("                \n");
+      out.write("              <div class=\"col-8 text-center\">\n");
+      out.write("                    <ul class=\"navbar-nav me-auto bg-infor \">\n");
+      out.write("                        <li class=\"nav-item dropdown\">\n");
+      out.write("                            <a style=\"font-size: 20px;\"  class=\"nav-link dropdown-toggle text-center\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\"> \n");
+      out.write("                                \n");
+      out.write("                                <img style=\"width: 30px; border-radius: 50%\" src=\"");
+      out.print(url);
+      out.write("/GUI/imgsanpham/2.png\"  alt=\"?nh Avatar\">  ");
+      out.print(khachHang.getHoVaTen());
+      out.write("\n");
+      out.write("                                \n");
+      out.write("                            </a>\n");
+      out.write("                            <ul class=\"dropdown-menu \" style=\" width: 126%\">\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"#\">My Order</a></li>\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"#\">Notification <img style=\"width: 22px; \" src=\"");
+      out.print(url);
+      out.write("/GUI/images/notification_icon.png\"  alt=\"?nh Avatar\"></a></li>\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"");
+      out.print(url );
+      out.write("/khachhang/updateprofile.jsp\">Update Information</a></li>\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"");
+      out.print(url );
+      out.write("/khachhang/resetpassword.jsp\">Change Password</a></li>\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"");
+      out.print(url );
+      out.write("/khachhang/upload.jsp\">Update Avatar</a></li>\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"");
+      out.print(url );
+      out.write("/homeGUI/getvoucher.jsp\">Get Voucher</a></li>\n");
+      out.write("                                    <li><hr class=\"dropdown-divider\"></li>\n");
+      out.write("                                    <li><a class=\"dropdown-item\" href=\"");
+      out.print(url );
+      out.write("/khach-hang?hanhdong=logout\">Log-out</a></li>\n");
+      out.write("                                </ul>\n");
+      out.write("                        </li>\n");
+      out.write("                    </ul>\t\n");
+      out.write("                                                        </div>\n");
+      out.write("            ");
+ 
+                }
+                
+      out.write("                    \n");
       out.write("            <a href=\"\">\n");
       out.write("              <i class=\"fa fa-shopping-bag\" aria-hidden=\"true\"></i>\n");
       out.write("            </a>\n");
