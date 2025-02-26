@@ -1,0 +1,409 @@
+<%
+    String url1 = request.getScheme()+ "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();;
+%>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="shortcut icon" href="<%= url1 %>/GUI/images/favicon.png" type="image/x-icon">
+
+  <title>
+    THT Helmet Store
+
+  </title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="<%= url1 %>/GUI/css/bootstrap.css" />
+
+  <!-- Custom styles for this template -->
+  <link href="<%= url1 %>/GUI/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="<%= url1 %>/GUI/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header -->
+    <%@include file="header.jsp" %>
+    <!-- header -->
+    
+    <!-- slider section -->
+    <section class="slider_section">
+      <div class="slider_container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-7">
+                    <div class="detail-box">
+                      <h1>
+                        Text
+                      </h1>
+                      <p>
+                        text
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-5 ">
+                    <div class="img-box">
+                      <img src="<%= url1 %>/GUI/images/slider-img.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end slider section -->
+  </div>
+  <!-- end hero area -->
+
+  <!-- shop section -->
+
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          News arrivals
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Ring
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $200
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Watch
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $300
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Teddy Bear
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $110
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p4.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Flower Bouquet
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $45
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p5.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Teddy Bear
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $95
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p6.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Flower Bouquet
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $70
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p7.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Watch
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $400
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="<%= url1 %>/GUI/images/p8.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Ring
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    $450
+                  </span>
+                </h6>
+              </div>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View All Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end shop section -->
+
+  <!-- gift section -->
+  <section class="gift_section layout_padding-bottom">
+    <div class="box ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="img_container">
+              <div class="img-box">
+                <img src="images/gifts.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <div class="detail-box">
+              <div class="heading_container">
+                <h2>
+                  Voucher <br>
+                </h2>
+              </div>
+              <p>
+                text
+              </p>
+              <div class="btn-box">
+                <a href="#" class="btn1">
+                  text
+                </a>
+                <a href="#" class="btn2">
+                  text
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- end gift section -->
+
+  <!-- info section -->
+  <section class="info_section  layout_padding2-top">
+    <div class="social_container">
+      <div class="social_box">
+        <a href="">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="info_container ">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <h6>
+              Text
+            </h6>
+            <p>
+              text
+            </p>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <h6>
+              Text
+            </h6>
+            <p>
+              Text
+            </p>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <h6>
+              Text
+            </h6>
+            <div class="info_link-box">
+              <a href="">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span> text </span>
+              </a>
+              <a href="">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                <span>text</span>
+              </a>
+              <a href="">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                <span>text</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer section -->
+    <footer class=" footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+        </p>
+      </div>
+    </footer>
+    <!-- footer section -->
+
+  </section>
+  <!-- end info section -->
+
+  <script src="<%= url1 %>/GUI/js/jquery-3.4.1.min.js"></script>
+  <script src="<%= url1 %>/GUI/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <script src="<%= url1 %>/GUI/js/custom.js"></script>
+
+</body>
+
+</html>
