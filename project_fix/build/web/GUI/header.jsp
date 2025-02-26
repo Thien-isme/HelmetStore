@@ -62,7 +62,7 @@
                         <li class="nav-item dropdown">
                             <a style="font-size: 20px;"  class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
                                 
-                                <img style="width: 30px; border-radius: 50%" src="<%=url%>/GUI/imgsanpham/2.png"  alt="?nh Avatar">  <%=khachHang.getHoVaTen()%>
+                                <img style="width: 30px; border-radius: 50%" src="<%=url%>/GUI/imgsanpham/<%=khachHang.getHinhAvatar()%>"  alt="?nh Avatar">  <%=khachHang.getHoVaTen() %>
                                 
                             </a>
                             <ul class="dropdown-menu " style=" width: 126%">

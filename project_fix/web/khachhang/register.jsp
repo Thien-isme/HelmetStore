@@ -1,5 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -34,7 +35,7 @@
 
         <div class="full-height">
             <!-- Header -->
-            <%@include file="../header.jsp" %>
+            <%@include file="../GUI/header.jsp" %>
             <%            String url1 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
                         + request.getContextPath();
             %>
@@ -81,8 +82,7 @@
             </div>
 
             <!-- Footer -->
-            <%--<%@include file="../header.jsp" %>--%>
-            <jsp:include page="../header.jsp"></jsp:include>
+            
         </div>
 
     </body>

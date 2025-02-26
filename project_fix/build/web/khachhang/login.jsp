@@ -44,7 +44,7 @@
                     <div class="card border-light-subtle shadow-sm">
                         <div class="row g-0">
                             <div class="col-12 col-md-6">
-                                <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="../GUI/images/login-banner.jpg" alt="">
+                                <img class="img-fluid rounded-start w-100 h-100 object-fit-cover" loading="lazy" src="<%=url1%>/GUI/imgsanpham/5.png" alt="">
                             </div>
                             <div class="col-12 col-md-6 d-flex align-items-center justify-content-center">
                                 <div class="col-12 col-lg-11 col-xl-10">
@@ -54,7 +54,7 @@
                                                 <div class="mb-5">
                                                     <div class="text-center mb-4">
                                                         <a href="#!">
-                                                            <img src="../GUI/images/bsb-logo.svg" alt="BootstrapBrain Logo" width="175" height="57">
+                                                            <img src="<%=url1%>/GUI/imgsanpham/2.png" alt="BootstrapBrain Logo" width="175" height="57">
                                                         </a>
                                                     </div>
                                                     <h4 class="text-center">Login</h4>
@@ -96,8 +96,8 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-center mt-5">
-                                                    <a href="register.jsp" class="link-secondary text-decoration-none">Create new account</a>
-                                                    <a href="reset-password.jsp" class="link-secondary text-decoration-none">Forgot password</a>
+                                                    <a href="<%=url1%>/khachhang/register.jsp" class="link-secondary text-decoration-none">Create new account</a>
+                                                    <a href="<%=url1%>/khachhang/resetpassword.jsp" class="link-secondary text-decoration-none">Forgot password</a>
                                                 </div> 
                                             </div>
                                         </div>

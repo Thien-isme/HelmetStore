@@ -243,7 +243,7 @@ public class KhachHangController extends HttpServlet {
 
             String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/" + request.getContextPath();
 
-            response.sendRedirect(url + "/index.jsp");
+            response.sendRedirect(url + "/GUI/index.jsp");
         } catch (Exception e) {
             System.out.println("Log-out thất bại");
             e.printStackTrace();
