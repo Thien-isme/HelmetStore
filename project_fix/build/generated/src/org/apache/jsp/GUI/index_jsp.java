@@ -65,16 +65,18 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <meta name=\"keywords\" content=\"\" />\r\n");
       out.write("  <meta name=\"description\" content=\"\" />\r\n");
       out.write("  <meta name=\"author\" content=\"\" />\r\n");
+      out.write("  <title>\r\n");
+      out.write("    THT Helmet Store\r\n");
+      out.write("\r\n");
+      out.write("  </title>\r\n");
+      out.write("  \r\n");
       out.write("  <link rel=\"shortcut icon\" href=\"");
       out.print( url1 );
       out.write("/GUI/images/favicon.png\" type=\"image/x-icon\">\r\n");
       out.write("<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js\" integrity=\"sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p\" crossorigin=\"anonymous\"></script>\r\n");
       out.write("        <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js\" integrity=\"sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF\" crossorigin=\"anonymous\"></script>\r\n");
-      out.write("  <title>\r\n");
-      out.write("    THT Helmet Store\r\n");
-      out.write("\r\n");
-      out.write("  </title>\r\n");
+      out.write("  \r\n");
       out.write("\r\n");
       out.write("  <!-- slider stylesheet -->\r\n");
       out.write("  <link rel=\"stylesheet\" type=\"text/css\" href=\"https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css\" />\r\n");
@@ -160,7 +162,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
       out.write(" \n");
       out.write("                \n");
-      out.write("              <a href=\"../khachhang/newjsp.jsp\">\n");
+      out.write("              <a href=\"../khachhang/login.jsp\">\n");
       out.write("              <i class=\"fa fa-user\" aria-hidden=\"true\"></i>\n");
       out.write("              <span>\n");
       out.write("                Login\n");
@@ -200,7 +202,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("/khachhang/upload.jsp\">Update Avatar</a></li>\n");
       out.write("                                    <li><a class=\"dropdown-item\" href=\"");
       out.print(url );
-      out.write("/homeGUI/getvoucher.jsp\">Get Voucher</a></li>\n");
+      out.write("/GUI/getvoucher.jsp\">Get Voucher</a></li>\n");
       out.write("                                    <li><hr class=\"dropdown-divider\"></li>\n");
       out.write("                                    <li><a class=\"dropdown-item\" href=\"");
       out.print(url );

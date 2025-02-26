@@ -47,7 +47,7 @@
                     if(khachHang==null){     
                 %> 
                 
-              <a href="../khachhang/newjsp.jsp">
+              <a href="../khachhang/login.jsp">
               <i class="fa fa-user" aria-hidden="true"></i>
               <span>
                 Login
@@ -71,7 +71,7 @@
                                     <li><a class="dropdown-item" href="<%=url %>/khachhang/updateprofile.jsp">Update Information</a></li>
                                     <li><a class="dropdown-item" href="<%=url %>/khachhang/resetpassword.jsp">Change Password</a></li>
                                     <li><a class="dropdown-item" href="<%=url %>/khachhang/upload.jsp">Update Avatar</a></li>
-                                    <li><a class="dropdown-item" href="<%=url %>/homeGUI/getvoucher.jsp">Get Voucher</a></li>
+                                    <li><a class="dropdown-item" href="<%=url %>/GUI/getvoucher.jsp">Get Voucher</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="<%=url %>/khach-hang?hanhdong=logout">Log-out</a></li>
                                 </ul>
