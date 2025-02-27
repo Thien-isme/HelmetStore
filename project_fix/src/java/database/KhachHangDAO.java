@@ -92,6 +92,7 @@ public class KhachHangDAO implements DAOInterface<KhachHang> {
             ps.setString(7, t.getDiaChiKhachHang());
             ps.setString(8, t.getDiaChiNhanHang());
             ps.setBoolean(9, t.isDangKyNhanBangTin());
+
             ps.setString(10, t.getMaKhachHang());
 
             System.out.println(ps);
@@ -183,9 +184,9 @@ public class KhachHangDAO implements DAOInterface<KhachHang> {
             ps.setString(2, khachHang.getThoiGianHieuLucMaXacThuc());
             ps.setString(3, khachHang.isTrangThaiXacThuc());
             ps.setString(4, khachHang.getMaKhachHang());
-            
+
             ketQua = ps.executeUpdate();
-            
+
             System.out.println("Bạn đã thực thi: " + sql);
             System.out.println("Có " + ketQua + " dòng bị thay đổi!");
 
@@ -203,52 +204,76 @@ public class KhachHangDAO implements DAOInterface<KhachHang> {
         int ketQua = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            
-            String sql = " UPDATE khachhang\n " +
-                         " SET matkhau = ?, trangthaixacthuc = ? " +
-                         " WHERE makhachhang = ? ";
-            
+
+            String sql = " UPDATE khachhang\n "
+                    + " SET matkhau = ?, trangthaixacthuc = ? "
+                    + " WHERE makhachhang = ? ";
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, khachHang.getMatKhau());
             ps.setString(2, "1");
             ps.setString(3, khachHang.getMaKhachHang());
-            
+
             ketQua = ps.executeUpdate();
-            
+
             JDBCUtil.close(con);
-            
+
         } catch (Exception e) {
             System.out.println("Lỗi ở updateNewPassword");
             e.printStackTrace();
         }
-        
+
         return ketQua;
-        
+
     }
 
     public int updateAvatar(KhachHang khachHang) {
         int ketQua = 0;
         try {
             Connection con = JDBCUtil.getConnection();
-            
-            String sql = " UPDATE khachhang\n" +
-                         " SET hinhavatar = ?\n" +
-                         " WHERE makhachhang = ?";
-            
+
+            String sql = " UPDATE khachhang\n"
+                    + " SET hinhavatar = ?\n"
+                    + " WHERE makhachhang = ?";
+
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, khachHang.getHinhAvatar());
             ps.setString(2, khachHang.getMaKhachHang());
-            
+
             ketQua = ps.executeUpdate();
-            
+
             JDBCUtil.close(con);
-            
+
         } catch (Exception e) {
             System.out.println("Lỗi ở updateAvatar");
             e.printStackTrace();
         }
-        
+
         return ketQua;
     }
 
+    public static void main(String[] args) {
+        // Tạo đối tượng KhachHang mẫu để test
+        KhachHang kh = new KhachHang();
+        kh.setMaKhachHang("1740161865375");  // Đảm bảo mã này tồn tại trong DB
+        kh.setHoVaTen("Nguyễn Văn A");
+        kh.setGioiTinh("male");
+        kh.setNgaySinh(Date.valueOf("2000-01-01"));
+        kh.setSoDienThoai("0909123456");
+        kh.setEmail("nguyenvana@example.com");
+        kh.setQuocTich("Vietnam");
+        kh.setDiaChiKhachHang("123 Lê Lợi, Q1");
+        kh.setDiaChiNhanHang("123 Lê Lợi, Q1");
+        kh.setDangKyNhanBangTin(true);
+
+        // Tạo đối tượng DAO và gọi hàm update
+        KhachHangDAO dao = new KhachHangDAO();
+        int ketQua = dao.update(kh);
+
+        if (ketQua > 0) {
+            System.out.println("Cập nhật thành công!");
+        } else {
+            System.out.println("Cập nhật thất bại!");
+        }
+    }
 }

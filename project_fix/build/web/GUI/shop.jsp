@@ -106,13 +106,31 @@
                     <%  SanPhamDAO dao = new SanPhamDAO();
 
                         List<SanPham> list = dao.selectAll();
-
+                        float soLuongPage = (float) list.size() / 16 + 1;
+                        int indexTrang = 0 ;
+                        String value = request.getParameter("value");
+                        System.out.println("value = " +value);
+                        
+                        if(value == null || value.equals("null")){
+                            indexTrang = 1;
+                        }else{
+                            indexTrang = Integer.parseInt(request.getParameter("value")) ;
+                        }
+                         
+                        
+                       
+                        
                         if (list != null && !list.isEmpty()) {
+                            int i = 0;
                             for (SanPham sanPham : list) {
+                                
+                                if (i<indexTrang*16 && i >= (indexTrang-1)*16 ) {
+                                   
+                                
                     %>             
                     <div class="col-sm-6 col-md-4 col-lg-3">
                         <div class="box">
-                            <a href="<%=url%>/sanpham/chitietsanpham.jsp">
+                            <a href="<%=url%>/sanpham/product-details.jsp">
                                 <div class="img-name">
                                     <h6 class="col-12 text-center"><%=sanPham.getTensanpham()%></h6>
                                 </div>
@@ -122,7 +140,7 @@
                                 <div class="detail-box row">
                                     <h6 class="col-12 text-center">
                                         Price
-                                        <span> $<%=sanPham.getGiaban() %> </span>
+                                        <span> $<%=sanPham.getGiaban()%> </span>
                                     </h6>
                                 </div>
                                 <div class="text-center">
@@ -139,6 +157,8 @@
                     </div>        
 
                     <%
+                        }
+                                i++;
                             }
                         }
                     %>
@@ -146,7 +166,24 @@
 
 
 
+                <!--Chuyển trang để hiện thêm sản phẩm-->
+                <div class="d-flex justify-content-center" >
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="">Previous</a></li>
+                                <%
+                                    if (soLuongPage > 0) {
+                                        for (int i = 1; i < soLuongPage; i++) {
 
+                                %>   
+                            <li class="page-item"><a class="page-link" href="<%=url%>/GUI/shop.jsp?value=<%=i%>"><%=i%></a></li>
+                            <%                            }
+                                }
+                            %>
+                            <li class="page-item"><a class="page-link" href="">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
 
 
 

@@ -47,13 +47,11 @@ public class KhachHangController extends HttpServlet {
             resetPassword(request, response);
         } else if (hanhdong.equals("viaemailbeforeresetpassword")) {
             viaemailbeforeresetpassword(request, response);
-        } else if(hanhdong.equals("updateavatar")){
-            updateavatar(request,response);
+        } else if (hanhdong.equals("updateavatar")) {
+            updateavatar(request, response);
         }
 
     }
-    
-    
 
     private void register(HttpServletRequest request, HttpServletResponse response) {
         String error = "";
@@ -202,6 +200,7 @@ public class KhachHangController extends HttpServlet {
         String diaChiKhachHang = request.getParameter("diaChiKhachHang");
         String diaChiNhanHang = request.getParameter("diaChiNhanHang");
         String dangKyNhanBangTinStr = request.getParameter("dangKyNhanBangTin");
+        String quocGia = request.getParameter("quocGia");
 
         boolean dangKyNhanBangTin = "on".equals(dangKyNhanBangTinStr) || "yes".equals(dangKyNhanBangTinStr);
         Date ngaySinh = null;
@@ -211,7 +210,6 @@ public class KhachHangController extends HttpServlet {
             e.printStackTrace();
         }
 
-        String quocGia = request.getParameter("quocGia");
         request.setAttribute("hoVaTen", hoVaTen);
         request.setAttribute("gioiTinh", gioiTinh);
         request.setAttribute("ngaySinh", ngaySinh);
@@ -229,8 +227,8 @@ public class KhachHangController extends HttpServlet {
         String url = "./khachhang/registersuccess.jsp";
         try {
             response.sendRedirect(url);
-        } catch (IOException ex) {
-
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -292,27 +290,23 @@ public class KhachHangController extends HttpServlet {
                 url = "/khachhang/resetpassword.jsp";
             } else {
                 url = "/khachhang/viaemailbeforeresetpassword.jsp";
-                
+
                 // Cập nhật newPassword để qua viaemailbeforeresetpassword có thể lưu xuống
                 khachHang.setMatKhau(newPassword);
-                
-                // Gửi mail để khách hàng nhận OTP
 
-            
+                // Gửi mail để khách hàng nhận OTP
                 // Cập nhật OTP và thời gian xác thực xuống CSDL để qua trang VIA check
                 String maXacThuc = OTP.getOTP();
                 String timeLate = Time.timeNowPlus_X_minutes(10);
-                
+
                 khachHang.setMaXacThuc(maXacThuc);
                 khachHang.setThoiGianHieuLucMaXacThuc(timeLate);
                 khachHang.setTrangThaiXacThuc("0");
-                
-                
 
                 KhachHangDAO dao = new KhachHangDAO();
                 if (dao.updateMaXacThuc(khachHang) > 0) {
                     System.out.println("Cập nhật OTP thành công");
-                    
+
                     // gửi OTP đến mail
                     Email.sendEmailTo(khachHang.getEmail(), khachHang.getMaXacThuc());
                 }
@@ -341,38 +335,35 @@ public class KhachHangController extends HttpServlet {
             if (obj != null) {
                 khachHang = (KhachHang) obj;
             }
-            
+
             String url = "";
             String error = "";
-            
-            
+
 //            String timeNowPlus15Minutes = Time.timeNowPlus_X_minutes(15);
 //            System.out.println("Timenow: " +timeNow);
 //            System.out.println("TimeKahchHnag: " +khachHang.getThoiGianHieuLucMaXacThuc());
             String timeNow = Time.getTimeNow();
-            
-            if(Time.compareTime(timeNow, khachHang.getThoiGianHieuLucMaXacThuc()) > 0){
+
+            if (Time.compareTime(timeNow, khachHang.getThoiGianHieuLucMaXacThuc()) > 0) {
                 error += "Đã hết thời gian hiệu lực của mã OTP";
                 url = "/khachhang/viaemailbeforeresetpassword.jsp";
             }
-            
-            
 
             if (!sortOTP.equals(khachHang.getMaXacThuc())) {
                 System.out.println("Đã xác thực THẤT BẠI.");
                 error = "SAI OTP";
                 url = "/khachhang/viaemailbeforeresetpassword.jsp";
-            } 
-            
-            if (error.length()>0) {
+            }
+
+            if (error.length() > 0) {
                 url = "/khachhang/viaemailbeforeresetpassword.jsp";
             } else {
                 // Cập nhật thông tin xuống CSDL khi người dùng nhập đúng OTP
                 KhachHangDAO dao = new KhachHangDAO();
-                
+
                 // Set mật khẩu mới và trạng thái xác thực = 1
                 dao.updateNewPassword(khachHang);
-                
+
                 System.out.println("Đã xác thực thành công. Mật khẩu đã được đổi");
                 url = "/khachhang/viaemailbeforeresetpassword_success.jsp";
             }
@@ -385,6 +376,7 @@ public class KhachHangController extends HttpServlet {
             e.printStackTrace();
         }
     }
+
     protected void updateavatar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -438,7 +430,7 @@ public class KhachHangController extends HttpServlet {
                 error = "Đã cập nhật Avatar thành công";
             }
         }
-        
+
         request.getRequestDispatcher("/khachhang/upload.jsp").forward(request, response);
 
     }
@@ -481,7 +473,5 @@ public class KhachHangController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    
 
 }

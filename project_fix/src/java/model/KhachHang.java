@@ -64,6 +64,9 @@ public class KhachHang {
         this.diaChiNhanHang = diaChiNhanHang;
         this.dangKyNhanBangTin = dangKyNhanBangTin;
     }
+
+    public KhachHang() {
+    }
     
     
     
