@@ -73,13 +73,7 @@
     <div class="full-height">
         <!-- Header -->
         <%@include file="../GUI/header.jsp" %>
-        <%
-            if(khachHang==null){ 
-        %>
-        <h1 class="red">Bạn chưa đăng nhập</h1>
-        <% 
-            }else {
-        %>
+
         <!-- Phần chính (Login form) sẽ căn giữa -->
         <div class="main-content">
             <div class="container">
@@ -90,7 +84,7 @@
                     <!-- Username input -->
                     <div data-mdb-input-init class="form-outline mb-2">
                         <label class="form-label" for="username">Username</label>
-                        <input type="text" id="username" class="form-control" name="username" value="<%=khachHang.getTenDangNhap()%>" />
+                        <input type="text" id="username" class="form-control" name="username" value="" />
                     </div>
 
                     <!-- password hiện tại input -->
@@ -121,6 +115,6 @@
         <!-- Footer -->
     </div>
     
-    <% } %>
+    
 </body>
 </html>

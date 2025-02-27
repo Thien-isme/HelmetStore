@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/web/GUI/shop.jsp</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/src/java/model/KhachHang.java</file>
             <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/web/GUI/header.jsp</file>
-            <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/web/GUI/voucherLink.jsp</file>
-            <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/web/GUI/getvoucher.jsp</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/src/java/controller/KhachHangController.java</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/web/khachhang/update.jsp</file>
+            <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/src/java/database/KhachHangDAO.java</file>
             <file>file:/F:/Ky_4_FPT/PRJ/ProjectPRJ/project_fix/web/GUI/index.jsp</file>
         </group>
     </open-files>
