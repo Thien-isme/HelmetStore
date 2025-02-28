@@ -183,75 +183,14 @@
                     </div>
                 </div>
             </section>
-<<<<<<< HEAD
-=======
+
             <!-- end slider section -->
 
 
             <!-- shop section -->
 
-            <section class="shop_section layout_padding">
-                <div class="container">
-                    <div class="heading_container heading_center">
-                        <h2>
-                            News arrivals
-                        </h2>
-                    </div>
-                    <div class="row">
-                        <%  SanPhamDAO dao = new SanPhamDAO();
-
-                            List<SanPham> list = dao.selectAll();
-
-                            if (list != null && !list.isEmpty()) {
-                                int count = 0;
-                                for (SanPham sanPham : list) {
-
-                                    if (count == 8) {
-                                        break;
-                                    }
-                                    count++;
-                        %>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <div class="box">
-                                <a href="<%=url%>/sanpham/product-details.jsp">
-                                    <div class="img-box">
-                                        <img src="<%= url1%>/GUI/imgsanpham/<%=sanPham.getHinhanhsanpham()%>" alt="Ảnh nón">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h6>
-                                            Ring
-                                        </h6>
-                                        <h6>
-                                            Price
-                                            <span>
-                                                $200
-                                            </span>
-                                        </h6>
-                                    </div>
-                                    <div class="new">
-                                        <span>
-                                            New
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                        </div>
-                        <%
-                                }
-                            }
-                        %>
 
 
-                    </div>
-                    <div class="btn-box">
-                        <a href="<%=url%>/GUI/shop.jsp">
-                            View All Products
-                        </a>
-                    </div>
-                </div>
-            </section>
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
             <!-- end shop section -->
 
             <!-- gift section -->
@@ -275,7 +214,7 @@
 
             <!-- end gift section -->
 
-<<<<<<< HEAD
+
 
 
 
@@ -427,78 +366,16 @@
                 }
             });
         </script>
-=======
-            <!-- info section -->
-            <section class="info_section  layout_padding2-top">
-                <div class="social_container">
-                    <div class="social_box">
-                        <a href="">
-                            <i class="fa fa-facebook" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="info_container ">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-4">
-                                <h6>
-                                    Text
-                                </h6>
-                                <p>
-                                    text
-                                </p>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <h6>
-                                    Text
-                                </h6>
-                                <p>
-                                    Text
-                                </p>
-                            </div>
-                            <div class="col-md-6 col-lg-4">
-                                <h6>
-                                    Text
-                                </h6>
-                                <div class="info_link-box">
-                                    <a href="">
-                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                        <span> text </span>
-                                    </a>
-                                    <a href="">
-                                        <i class="fa fa-phone" aria-hidden="true"></i>
-                                        <span>text</span>
-                                    </a>
-                                    <a href="">
-                                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                                        <span>text</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- footer section -->
-                <footer class=" footer_section">
-                    <div class="container">
-                        <p>
-                            &copy; <span id="displayYear"></span> All Rights Reserved By
-                        </p>
-                    </div>
-                </footer>
-                <!-- footer section -->
 
-            </section>
-            <!-- end info section -->
+           
 
             <script src="<%= url1%>/GUI/js/jquery-3.4.1.min.js"></script>
             <script src="<%= url1%>/GUI/js/bootstrap.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
             </script>
             <script src="<%= url1%>/GUI/js/custom.js"></script>
-        </div>
-        <!-- end hero area -->
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+       
+
     </body>
 
 </html>

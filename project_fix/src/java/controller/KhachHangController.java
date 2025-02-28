@@ -47,11 +47,11 @@ public class KhachHangController extends HttpServlet {
             resetPassword(request, response);
         } else if (hanhdong.equals("viaemailbeforeresetpassword")) {
             viaemailbeforeresetpassword(request, response);
-<<<<<<< HEAD
+
         } else if (hanhdong.equals("updateAvatar")) {
-=======
+
         } else if (hanhdong.equals("updateavatar")) {
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
             updateavatar(request, response);
         }
 
@@ -205,14 +205,14 @@ public class KhachHangController extends HttpServlet {
         String diaChiKhachHang = request.getParameter("diaChiKhachHang");
         String diaChiNhanHang = request.getParameter("diaChiNhanHang");
         String dangKyNhanBangTinStr = request.getParameter("dangKyNhanBangTin");
-<<<<<<< HEAD
+
         
 
         
         System.out.println("dangKyNhanBangTinStr = " +dangKyNhanBangTinStr);
-=======
-        String quocGia = request.getParameter("quocGia");
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
+
+
 
         boolean dangKyNhanBangTin = "on".equals(dangKyNhanBangTinStr) || "yes".equals(dangKyNhanBangTinStr);
         
@@ -225,9 +225,9 @@ public class KhachHangController extends HttpServlet {
             e.printStackTrace();
         }
 
-<<<<<<< HEAD
+
         
-=======
+
         request.setAttribute("hoVaTen", hoVaTen);
         request.setAttribute("gioiTinh", gioiTinh);
         request.setAttribute("ngaySinh", ngaySinh);
@@ -237,26 +237,26 @@ public class KhachHangController extends HttpServlet {
         request.setAttribute("diaChiNhanHang", diaChiNhanHang);
         request.setAttribute("dangKyNhanBangTin", dangKyNhanBangTin);
         request.setAttribute("quocGia", quocGia);
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
         System.out.println(gioiTinh);
         KhachHang kh = new KhachHang(maKhachHang, hoVaTen, gioiTinh, ngaySinh, soDienThoai, email, quocGia, diaChiKhachHang, diaChiNhanHang, dangKyNhanBangTin);
         KhachHangDAO khachHangDao = new KhachHangDAO();
         int isUpdate = khachHangDao.update(kh);
 
-<<<<<<< HEAD
+
         
         HttpSession session = request.getSession();
         session.setAttribute("khachHang", khachHangDao.selectById(kh));
         
         request.getRequestDispatcher("/khachhang/update.jsp").forward(request, response);
-=======
+
         String url = "./khachhang/registersuccess.jsp";
         try {
             response.sendRedirect(url);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
     }
 
     private void logout(HttpServletRequest request, HttpServletResponse response) {
@@ -458,11 +458,10 @@ public class KhachHangController extends HttpServlet {
             }
         }
 
-<<<<<<< HEAD
         request.getRequestDispatcher("/khachhang/update.jsp").forward(request, response);
-=======
-        request.getRequestDispatcher("/khachhang/upload.jsp").forward(request, response);
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
+        
+
 
     }
 

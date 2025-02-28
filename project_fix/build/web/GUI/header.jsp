@@ -1,17 +1,12 @@
 <%@page import="model.KhachHang"%>
 <% String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath(); %>
 <% String currentUrl = request.getRequestURI();%>
-<<<<<<< HEAD
 
-
-
-
-=======
 
 
 
 <!-- header section strats -->
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
 <header class="header_section">
     <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="<%=url%>/GUI/index.jsp">
@@ -60,7 +55,7 @@
                 } else {
                 %>
 
-<<<<<<< HEAD
+
                 <div class="col-5 text-center">
                     <ul class="navbar-nav me-auto bg-infor" style=" width: 80%">
                         <li class="nav-item dropdown">
@@ -70,7 +65,7 @@
 
                             </a>
                             <ul class="dropdown-menu " style=" width: 100%">
-=======
+
                 <div class="col-8 text-center">
                     <ul class="navbar-nav me-auto bg-infor ">
                         <li class="nav-item dropdown">
@@ -80,7 +75,7 @@
 
                             </a>
                             <ul class="dropdown-menu " style=" width: 126%">
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
                                 <li><a class="dropdown-item" href="#">My Order</a></li>
                                 <li><a class="dropdown-item" href="#">Notification <img style="width: 22px; " src="<%=url%>/GUI/images/notification_icon.png"  alt="?nh Avatar"></a></li>
                                 <li><a class="dropdown-item" href="<%=url%>/khachhang/update.jsp">Update Information</a></li>
@@ -111,8 +106,7 @@
         </div>
     </nav>
 </header>
-<<<<<<< HEAD
 
-=======
+
 <!-- end header section -->
->>>>>>> bdf32329f503576673e6287e224b1a761077a363
+
